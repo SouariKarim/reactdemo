@@ -1,7 +1,28 @@
+import  { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
+
+  const [isWebView, setIsWebView] = useState(false);
+ 
+  useEffect(() => {
+    // Check if running in a WebView (React Native)
+    const checkWebView = () => {
+      if (window.isReactNativeWebView) {
+        setIsWebView(true);
+      }
+    };
+ 
+    checkWebView(); // Initial check
+ 
+    // Listen for changes (optional)
+    window.addEventListener('message', checkWebView);
+ 
+    return () => {
+      window.removeEventListener('message', checkWebView);
+    };
+  }, []);
   return (
     <div className="App">
       <header className="App-header">
@@ -9,6 +30,7 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
+        { isWebView ? <p>Hide the header</p> : <p>display the header</p> }
         <a
           className="App-link"
           href="https://reactjs.org"
