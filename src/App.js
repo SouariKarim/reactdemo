@@ -9,6 +9,7 @@ function App() {
   useEffect(() => {
     // Check if running in a WebView (React Native)
     const checkWebView = () => {
+      console.log("window.isReactNativeWebView --->  : ",  window.isReactNativeWebView)
       if (window.isReactNativeWebView) {
         setIsWebView(true);
       }
@@ -30,6 +31,7 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
+        {console.log("isWebView --->  : ", isWebView)}
         { isWebView ? <p>Hide the header</p> : <p>display the header</p> }
         <a
           className="App-link"
