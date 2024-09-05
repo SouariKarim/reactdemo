@@ -28,12 +28,6 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <p> window.isReactNativeWebView  = {window.isReactNativeWebView}</p>
-                <p> isWebView  = {isWebView}</p>
-
         {console.log("isWebView --->  : ", isWebView)}
         { isWebView ? <p>Hide the header</p> : <p>display the header</p> }
         <a
